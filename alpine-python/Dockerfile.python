@@ -1,0 +1,5 @@
+FROM r.gpxtrade.com/frolvlad/alpine-python2:original
+COPY repositories /etc/apk/repositories
+COPY pip.conf /root/.pip/pip.conf
+RUN apk add --no-cache tzdata && cp /usr/share/zoneinfo/Asia/Shanghai /etc/localtime \
+  && echo "Asia/Shanghai" >  /etc/timezone && date && apk --no-cache del tzdata
